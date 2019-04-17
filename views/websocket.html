@@ -1,0 +1,30 @@
+{{template "base/base.html" .}}
+{{define "head"}}
+<title>WEB IM demo</title>
+{{end}}
+{{define "body"}}
+<div class="container">
+    <h3>当前用户: <span id="uname">{{.UserName}}</span></h3>
+    <h4>{{i18n .Lang "send_box"}}:</h4>
+    <form class="form-inline">
+        <div class="col-md-6 form-group">
+            <input id="token" type="hidden" value="{{.Token}}" />
+            <label>接收者ID：</label>
+            <input id="target" type="text" class="form-control" />
+            <label>接收者昵称：</label>
+            <input id="usernick" type="text" class="form-control" />
+            <label>接收者头像：</label>
+            <input id="useravatar" type="text" class="form-control" />
+            <label>发送内容：</label>
+            <input id="sendbox" type="text" class="form-control" onkeydown="if(event.keyCode==13)return false;" required>
+            <button id="sendbtn" type="button" class="btn btn-default">{{i18n .Lang "Send"}}</button>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <h3>{{i18n .Lang "chat_history"}}:</h3>
+    <ul id="chatbox">
+        <li>{{i18n .Lang "welcome"}}</li>
+    </ul>
+</div>
+{{end}}
